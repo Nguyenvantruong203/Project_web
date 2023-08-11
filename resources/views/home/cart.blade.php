@@ -88,8 +88,11 @@
                 <div class="row row-pb-lg">
                     <div class="col-md-12">
                         <div class="product-name d-flex">
-                            <div class="one-forth text-left px-4">
-                                <span>Product Details</span>
+                            <div class="one-forth text-left ml-4 mt-2 px-3">
+                                <span>Image</span>
+                            </div>
+                            <div class="one-eight text-center">
+                                <span>Product Name</span>
                             </div>
                             <div class="one-eight text-center">
                                 <span>Price</span>
@@ -98,7 +101,7 @@
                                 <span>Quantity</span>
                             </div>
                             <div class="one-eight text-center">
-                                <span>Total</span>
+                                <span>Size</span>
                             </div>
                             <div class="one-eight text-center px-4">
                                 <span>Remove</span>

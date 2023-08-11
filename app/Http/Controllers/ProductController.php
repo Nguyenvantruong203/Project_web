@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\product;
 use App\Models\category;
+use App\Models\product_detail;
+// use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
@@ -20,11 +22,10 @@ class ProductController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function category()
-    {
-
-    }
-
+    // public function product_detail(){
+    //     $detail= product_detail::all();
+    //     return view('home.product_detail', compact('detail'));
+    // }
     /**
      * Store a newly created resource in storage.
      */
@@ -39,7 +40,10 @@ class ProductController extends Controller
     public function show($id)
     {
         $pro = Product::find($id);
-        // $product = Product::where('category_id', $pro->id)->get();
+        // $pro = DB::table('products')
+        // ->join('product_details', 'products.id', '=', 'product_details.product_id')
+        // ->select('products.*', 'product_details.*')
+        // ->get();
         return view('home.product_detail', compact('pro'));
     }
 

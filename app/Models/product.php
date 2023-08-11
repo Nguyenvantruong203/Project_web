@@ -11,7 +11,7 @@ class product extends Model
     public $timestamps = false;
     // protected $table = 'product';//đặt tên để gọi được table trong query builder ()
     protected $fillable = [
-        'product_id',
+        // 'product_id',
         'product_name',
         'category_id',
         'price',

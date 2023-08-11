@@ -85,7 +85,7 @@
                         <div class="owl-carousel">
                             <div class="item">
                                 <div class="product-entry border">
-                                    <a href="/product_detail" class="prod-img">
+                                    <a href="" class="prod-img">
                                         <img src="{{ $pro->image }}" class="img-fluid" alt="picture error">
                                     </a>
                                 </div>
