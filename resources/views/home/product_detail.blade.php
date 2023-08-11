@@ -87,6 +87,7 @@
                                 <div class="product-entry border">
                                     <a href="/product_detail" class="prod-img">
                                         <img src="{{ $pro->image }}" class="img-fluid" alt="picture error">
+                                       
                                     </a>
                                 </div>
                             </div>
@@ -122,8 +123,8 @@
                                     placeholder="Inputs Size"></p>
                             <div class="row">
                                 <div class="col-sm-12 text-center">
-                                    <p class="addtocart"><a href="/cart" class="btn btn-primary btn-addtocart"><i
-                                                class="icon-shopping-cart"></i> Add to Cart</a></p>
+                                    <p class="addtocart"><a href="route" class="btn btn-primary btn-addtocart"><i
+                                                class="icon-shopping-cart "></i> Add to Cart</a></p>
                                 </div>
                             </div>
                         </div>

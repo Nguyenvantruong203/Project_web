@@ -33,6 +33,7 @@ Route::get('/home', [ProductController::class, "index"]);
     Route::get('product_detail/{id}', [ProductController::class, "show"])->name('product_detail');
 // });
 
-
+route::get('addcart/{id}', [ProductController::class, 'addcart'])->name('addtocart');
+route::get('showcart', [ProductController::class, 'showcart'])->name('showcart');
 
 

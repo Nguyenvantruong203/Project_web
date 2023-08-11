@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\product;
 use App\Models\category;
-
+use App\Models\cart;
+use App\Models\product_detail;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -20,9 +21,12 @@ class ProductController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function category()
-    {
-
+    public function addmCart(){
+        $result = Product::select('product.*')
+        ->join('product_detail', 'product.id', '=', 'product_detail.id')
+        ->get();
+       // return view('home.cart',compact('result')); 
+        return redirect()->route('home.cart')->with('msg', $result) ;  
     }
 
     /**
@@ -39,10 +43,31 @@ class ProductController extends Controller
     public function show($id)
     {
         $pro = Product::find($id);
-        // $product = Product::where('category_id', $pro->id)->get();
+        //$product = Product::where('category.id', $pro->id)->get();
         return view('home.product_detail', compact('pro'));
     }
+    // public function addtocart(){
+    //     $products = Product::find($id);
+    //     //$cart = array();
+    //    $cart = session()->get(key('cart'));
+    //     if(isset($cart[$id])){
+    //         $cart[$id]['quantity']=$cart[$id]['quantity'] + 1;
 
+    //     }else{
+    //         $cart[$id] = [
+    //             'image' => $products -> image,
+    //             //'product_name' => $product ->product_name,
+    //             'quantity' =>1,
+    //             'price' =>$products -> price
+    //         ];
+    //     }
+    //     session()->put('cart',$cart);
+    //   return redirect()->route('addtocart')->with('cart', $cart);       
+
+    // }
+    // public function showcart(){
+
+    // }
     /**
      * Show the form for editing the specified resource.
      */
@@ -66,4 +91,21 @@ class ProductController extends Controller
     {
         //
     }
+
+    public function AddCart($product, $id){
+        $newproduct = ['quanity' => 0, 'price' => $product ->price, 'productInfo' => $product];
+        if($this -> products){
+            if(array_key_exists($id, $products)){
+                $newProduct = $products[$id];
+            }
+        }
+        $newProduct['quantity']+1;
+        $newProduct['price'] = $newProduct['quantity'] * $product ->price;
+        $this -> product[$id]= $newProduct;
+    
+    
+    }
+
+
+
 }

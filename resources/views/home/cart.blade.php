@@ -82,7 +82,34 @@
             </div>
         </div>
 
-
+        {{-- div class="container mt-5 ">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Ảnh</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+           @foreach ($result as $item)
+           <tbody>
+            <tr>
+                <td>{{ $item->id }}</td>
+                <td>{{ $item->image }}</td>
+                <td>{{ $item->product_name }}</td>
+                <td>{{ $item->price }}</td>
+                <td>{{ $item->quantity }}</td>
+                <td>
+                    <a href="$product = Product::where('category_id', $pro->id)->get();" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+           @endforeach
+        </table>
+    </div> --}}
         <div class="colorlib-product">
             <div class="container">
                 <div class="row row-pb-lg">
