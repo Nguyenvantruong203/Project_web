@@ -24,8 +24,13 @@ class AdminController extends Controller
      */
     public function create(Request $request)
     {
+        if($request->has('uimage')){
+            $file = $request->uimage;
+            $file_name= $file->getClientOriginalName();
+            $file->move(public_path('uploads'), $file_name);
+        }
+        $request->merge(['image'=>$file_name]);
         $product = new Product();
-        // $product->product_id = $request->id;
         $product->product_name = $request->product_name;
         $product->category_id = $request->category_id;
         $product->price = $request->price;
@@ -37,6 +42,7 @@ class AdminController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -44,7 +50,7 @@ class AdminController extends Controller
     {
         $product = product::find($id);
         $cate = category::all();
-        return view('admin.edit', compact('product', 'cate'));
+        return view('admin.edit', compact('product', 'cate'))->with('status', 'Edited product successfully !!');;
     }
 
     /**
@@ -52,7 +58,13 @@ class AdminController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $product = product::find($id);
+        $product->product_name = $request->product_name;
+        $product->category_id = $request->category_id;
+        $product->price = $request->price;
+        $product->image = $request->image;
+        $product->save();
+        return redirect(route('adminindex'))->with('status', 'Added product successfully !!');
     }
 
     /**
@@ -60,6 +72,7 @@ class AdminController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        product::destroy($id);
+        return redirect(route('adminindex'))->with('status', 'Deleted product successfully!!');
     }
 }
