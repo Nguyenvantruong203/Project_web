@@ -71,7 +71,7 @@
                             <div class="mb-3">
                                 <label for="image" class="form-label">Image</label>
                                 <input type="file" class="form-control" id="image" name="image"
-                                    value="{{ $product->image }}">
+                                    value="/uploads/{{ $product->image }}">
                             </div>
                             <button type="submit" class="btn btn-primary btn-success">Update</button>
                         </form>
