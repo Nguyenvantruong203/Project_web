@@ -64,12 +64,12 @@
                 <div class="position-sticky">
                     <ul class="nav justify-content-center">
                         <li class="nav-item mx-2">
-                            <a class="nav-link active" href="{{ route('adminindex') }}">
+                            <a class="nav-link" href="{{ route('adminindex') }}">
                                 Product
                             </a>
                         </li>
                         <li class="nav-item mx-2">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{ route('indexcategory') }}">
                                 Category
                             </a>
                         </li>
