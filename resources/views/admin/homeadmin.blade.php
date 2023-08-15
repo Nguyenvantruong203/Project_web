@@ -12,11 +12,18 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="product_name" class="form-label">Product Name</label>
-                                <input type="text" class="form-control" id="product_name" name="product_name">
+                                <input type="text" class="form-control" id="product_name" name="product_name"
+                                    placeholder="Input product name">
+                            </div>
+                            <div style='color:red;'>
+                                @error('usn')
+                                    {{ $message }}
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="price" class="form-label">Price</label>
-                                <input type="text" class="form-control" id="price" name="price">
+                                <input type="text" class="form-control" id="price" name="price"
+                                    placeholder="Input price">
                             </div>
                             <div class="mb-3">
                                 <label for="category_id" class="form-label">Category</label>

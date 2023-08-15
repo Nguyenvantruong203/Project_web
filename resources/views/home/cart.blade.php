@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Shop Vladak</title>
+    <title>Shop Clothes</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -81,9 +81,7 @@
                 </div>
             </div>
         </div>
-
-
-        <div class="colorlib-product">
+        {{-- <div class="colorlib-product">
             <div class="container">
                 <div class="row row-pb-lg">
                     <div class="col-md-12">
@@ -110,7 +108,55 @@
                     </div>
                 </div>
             </div>
+        </div> --}}
+        <style>
+            .table td,
+            .table th {
+                vertical-align: middle;
+            }
+
+            .table img {
+                max-width: 200px;
+            }
+
+            .table input {
+                width: 60px;
+            }
+
+            .table .btn-danger {
+                margin-top: 10px;
+            }
+        </style>
+        <div class="container mt-5">
+            <h2>Your Shopping Cart</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Ảnh</th>
+                            <th scope="col">Tên Sản Phẩm</th>
+                            <th scope="col">Giá</th>
+                            <th scope="col">Số Lượng</th>
+                            <th scope="col">Hành Động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td><img src="https://via.placeholder.com/150" alt="Product Image"></td>
+                            <td>Product 1</td>
+                            <td>$10.00</td>
+                            <td>
+                                <input type="number" class="form-control" value="1" min="1">
+                            </td>
+                            <td><button class="btn btn-danger btn-sm">Xóa</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
+
         @include('home.footer')
     </div>
 

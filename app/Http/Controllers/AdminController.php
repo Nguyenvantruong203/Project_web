@@ -16,7 +16,6 @@ class AdminController extends Controller
         $product = product::all();
         $cate = category::all();
         return view('admin.homeadmin', compact('product', 'cate'));
-
     }
 
     /**
@@ -24,6 +23,22 @@ class AdminController extends Controller
      */
     public function create(Request $request)
     {
+        $request->validate(
+            [
+                'product_name' => 'required|integer',
+                'usn' => 'required|min:8',
+                'pwd' => 'required|min:8'
+            ],
+            [
+                'product_name.required' => "id ko dc bo trong1",
+                'product_name.integer' => "id la so nguyen",
+                'usn.required' => "Username ko dc bo trong1",
+                'usn.min' => "Username hon 8",
+                'pwd.required' => "pass ko dc bo trong3",
+                'pwd.min:8' => "pass lon hon 8   ",
+
+            ]
+        );
         if($request->has('uimage')){
             $file = $request->uimage;
             $file_name= $file->getClientOriginalName();
@@ -36,7 +51,7 @@ class AdminController extends Controller
         $product->price = $request->price;
         $product->image = $request->image;
         $product->save();
-        return redirect(route('adminindex'));
+        return redirect(route('adminindex'))->with('status', 'Added product successfully !!');;
     }
 
     /**
@@ -50,7 +65,7 @@ class AdminController extends Controller
     {
         $product = product::find($id);
         $cate = category::all();
-        return view('admin.edit', compact('product', 'cate'))->with('status', 'Edited product successfully !!');;
+        return view('admin.edit', compact('product', 'cate'));
     }
 
     /**
@@ -58,6 +73,12 @@ class AdminController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        if($request->has('uimage')){
+            $file = $request->uimage;
+            $file_name= $file->getClientOriginalName();
+            $file->move(public_path('uploads'), $file_name);
+        }
+        $request->merge(['image'=>$file_name]);
         $product = product::find($id);
         $product->product_name = $request->product_name;
         $product->category_id = $request->category_id;
@@ -66,7 +87,6 @@ class AdminController extends Controller
         $product->save();
         return redirect(route('adminindex'))->with('status', 'Added product successfully !!');
     }
-
     /**
      * Remove the specified resource from storage.
      */

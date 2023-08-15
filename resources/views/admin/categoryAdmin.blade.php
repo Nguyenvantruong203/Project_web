@@ -12,7 +12,8 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="price" class="form-label">Category Name</label>
-                                <input type="text" class="form-control" id="price" name="category_name">
+                                <input type="text" class="form-control" id="price" name="category_name"
+                                    placeholder="Input category name">
                             </div>
                             <div class="mb-3">
                                 <button type="submit" class="btn btn-primary">Submit</button>

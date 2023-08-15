@@ -69,6 +69,11 @@
                             </a>
                         </li>
                         <li class="nav-item mx-2">
+                            <a class="nav-link" href="#">
+                                Product Detail
+                            </a>
+                        </li>
+                        <li class="nav-item mx-2">
                             <a class="nav-link" href="{{ route('indexcategory') }}">
                                 Category
                             </a>
@@ -78,6 +83,7 @@
                                 Orders
                             </a>
                         </li>
+
                     </ul>
                 </div>
             </nav>

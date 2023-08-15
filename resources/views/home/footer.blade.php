@@ -7,22 +7,23 @@
         </div>
         <div class="row">
             <div class="col partner-col text-center">
-                <img src="assets/images/brand-1.jpg" class="img-fluid" alt="picture error">
+                <img src="{{ asset('assets/images/brand-1.jpg') }}" class="img-fluid" alt="picture error">
             </div>
             <div class="col partner-col text-center">
-                <img src="assets/images/brand-2.jpg" class="img-fluid" alt="picture error">
+                <img src="{{ asset('assets/images/brand-2.jpg') }}" class="img-fluid" alt="picture error">
             </div>
             <div class="col partner-col text-center">
-                <img src="assets/images/brand-3.jpg" class="img-fluid" alt="picture error">
+                <img src="{{ asset('assets/images/brand-3.jpg') }}" class="img-fluid" alt="picture error">
             </div>
             <div class="col partner-col text-center">
-                <img src="assets/images/brand-4.jpg" class="img-fluid" alt="picture error">
+                <img src="{{ asset('assets/images/brand-4.jpg') }}" class="img-fluid" alt="picture error">
             </div>
             <div class="col partner-col text-center">
-                <img src="assets/images/brand-5.jpg" class="img-fluid" alt="picture error">
+                <img src="{{ asset('assets/images/brand-5.jpg') }}" class="img-fluid" alt="picture error">
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <footer id="colorlib-footer" role="contentinfo">

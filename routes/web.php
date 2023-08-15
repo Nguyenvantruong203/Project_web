@@ -40,8 +40,6 @@ Route::get('/about', function () {
         Route::get('/editcategory/{id}', [CategoryController::class, 'edit'])->name('editcategory');
         Route::post('/editcategory/{id}', [CategoryController::class, 'update'])->name('updatecategory');
         Route::get('/deletecategory/{id}', [CategoryController::class, 'destroy'])->name('deletecategory');
-
-
     });
 
 

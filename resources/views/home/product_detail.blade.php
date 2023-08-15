@@ -96,26 +96,26 @@
                         <div class="product-desc">
                             <h3>{{ $pro->product_name }}</h3>
                             <p class="price">
-                                <span>{{ $pro->price }}</span>
+                                <span>{{ $pro->price }}$</span>
                             </p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, aliquid! Quo aut nemo
-                                maxime sequi itaque velit, qui dolores odit ullam ut obcaecati quae impedit non,
-                                doloremque dolorum veritatis. Vel.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente temporibus repudiandae,
+                                ex voluptatibus, aspernatur aperiam ipsam corporis dolores ipsa pariatur impedit? Minus,
+                                distinctio suscipit quis sit nobis aut numquam pariatur.</p>
                             <div class="input-group mb-4">
-                                {{-- <span class="input-group-btn">
+                                <span class="input-group-btn">
                                     <button type="button" class="quantity-left-minus btn" data-type="minus"
                                         data-field="">
                                         <i class="icon-minus2"></i>
                                     </button>
-                                </span> --}}
+                                </span>
                                 <input type="text" id="quantity" name="quantity" class="form-control input-number"
                                     value="1" min="1" max="100">
-                                {{-- <span class="input-group-btn ml-1">
+                                <span class="input-group-btn ml-1">
                                     <button type="button" class="quantity-right-plus btn" data-type="plus"
                                         data-field="">
                                         <i class="icon-plus2"></i>
                                     </button>
-                                </span> --}}
+                                </span>
 
                             </div>
                             <p class="input-group-btn "><input type="text" class="form-control input-number"
@@ -159,6 +159,35 @@
     <script src="{{ asset('assets/js/jquery.stellar.min.js') }}"></script>
     <!-- Main -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+
+            var quantitiy = 0;
+            $('.quantity-right-plus').click(function(e) {
+                // Stop acting like a button
+                e.preventDefault();
+                // Get the field name
+                var quantity = parseInt($('#quantity').val());
+                // If is not undefined
+                $('#quantity').val(quantity + 1);
+                // Increment
+            });
+
+            $('.quantity-left-minus').click(function(e) {
+                // Stop acting like a button
+                e.preventDefault();
+                // Get the field name
+                var quantity = parseInt($('#quantity').val());
+                // If is not undefined
+                // Increment
+                if (quantity > 0) {
+                    $('#quantity').val(quantity - 1);
+                }
+            });
+
+        });
+    </script>
 
 
 </body>
