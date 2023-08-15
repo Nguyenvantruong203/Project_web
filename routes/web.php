@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductDetailController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,6 +45,18 @@ Route::get('/about', function () {
         Route::get('/deletecategory/{id}', [CategoryController::class, 'destroy'])->name('deletecategory');
     });
 
+    Route::prefix('/admin')->group(function(){
+        Route::get('/homedetail', [ProductDetailController::class, 'index'])->name('indexdetail');
+        Route::post('/homedetail', [ProductDetailController::class, 'create'])->name('createdetail');
+        Route::get('/editdetail/{id}', [ProductDetailController::class, 'edit'])->name('editdetail');
+        Route::post('/editdetail/{id}', [ProductDetailController::class, 'update'])->name('updatedetail');
+        Route::get('/deletedetail/{id}', [ProductDetailController::class, 'destroy'])->name('deletedetail');
+    });
 
+    Route::prefix('/admin')->group(function(){
+        Route::get('/homeorder', [OrderController::class, 'index'])->name('indexorder');
+        Route::post('/homeorder', [OrderController ::class, 'store'])->name('createorder');
+
+    });
 
 

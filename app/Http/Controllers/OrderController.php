@@ -1,51 +1,48 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\product;
-use App\Models\category;
-use App\Models\product_detail;
-// use Illuminate\Support\Facades\DB;
 
+use App\Models\order;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-       $product = product::all();
-        return view('home.product', compact('product'));
+        $order = order::all();
+        return view('admin.orderAdmin', compact(['order']));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    // public function product_detail(){
+    public function create(Request $request)
+    {
 
-    //     return view('home.product_detail', compact('product'));
-    // }
+    }
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $order = new order();
+        $order->quantity = $request->quantity;
+        $order->size = $request->size;
+        $order->save();
+        return redirect(route('indexorder'));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(string $id)
     {
-
-        $product = Product::join('product_details', 'products.id', '=', 'product_details.product_id')
-        ->select('products.*', 'product_details.*')
-        ->where('products.id', $id)
-        ->first();
-        // return response()->json($product);
-        return view('home.product_detail', compact('product'));
+        //
     }
 
     /**

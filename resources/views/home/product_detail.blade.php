@@ -86,7 +86,7 @@
                         <div class="item">
                             <div class="product-entry border">
                                 <a href="" class="prod-img">
-                                    <img src="/uploads/{{ $pro->image }}" class="img-fluid" alt="picture error">
+                                    <img src="/uploads/{{ $product->image }}" class="img-fluid" alt="picture error">
                                 </a>
                             </div>
                         </div>
@@ -94,13 +94,11 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="product-desc">
-                            <h3>{{ $pro->product_name }}</h3>
+                            <h3>{{ $product->product_name }}</h3>
                             <p class="price">
-                                <span>{{ $pro->price }}$</span>
+                                <span>{{ $product->price }}$</span>
                             </p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente temporibus repudiandae,
-                                ex voluptatibus, aspernatur aperiam ipsam corporis dolores ipsa pariatur impedit? Minus,
-                                distinctio suscipit quis sit nobis aut numquam pariatur.</p>
+                            <p>{{ $product->description }}</p>
                             <div class="input-group mb-4">
                                 <span class="input-group-btn">
                                     <button type="button" class="quantity-left-minus btn" data-type="minus"

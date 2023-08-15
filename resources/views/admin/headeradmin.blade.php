@@ -69,7 +69,7 @@
                             </a>
                         </li>
                         <li class="nav-item mx-2">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{ route('indexdetail') }}">
                                 Product Detail
                             </a>
                         </li>
@@ -79,7 +79,7 @@
                             </a>
                         </li>
                         <li class="nav-item mx-2">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{ route('indexorder') }}">
                                 Orders
                             </a>
                         </li>
