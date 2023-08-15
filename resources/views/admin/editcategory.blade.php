@@ -51,27 +51,9 @@
                         <form action="" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
-                                <label for="product_name" class="form-label">Product Name</label>
-                                <input type="text" class="form-control" id="product_name" name="product_name"
-                                    value="{{ $product->product_name }}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="price" class="form-label">Price</label>
-                                <input type="text" class="form-control" id="price" name="price"
-                                    value="{{ $product->price }}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="category_id" class="form-label">Category</label>
-                                <select class="form-select" id="category_id" name="category_id">
-                                    @foreach ($cate as $item)
-                                        <option value="{{ $item->id }}">{{ $item->category_name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="image" class="form-label">Image</label>
-                                <input type="file" class="form-control" name="uimage"
-                                    value="/uploads/{{ $product->image }}">
+                                <label for="" class="form-label">Product Name</label>
+                                <input type="text" class="form-control" id="product_name" name="category_name"
+                                    value="{{ $category->category_name }}">
                             </div>
                             <button type="submit" class="btn btn-primary btn-success">Update</button>
                         </form>

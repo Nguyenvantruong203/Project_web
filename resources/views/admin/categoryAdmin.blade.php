@@ -11,31 +11,9 @@
                         <form action="" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
-                                <label for="product_name" class="form-label">Product Name</label>
-                                <input type="text" class="form-control" id="product_name" name="product_name"
-                                    placeholder="Input product name">
-                            </div>
-                            <div style='color:red;'>
-                                @error('usn')
-                                    {{ $message }}
-                                @enderror
-                            </div>
-                            <div class="mb-3">
-                                <label for="price" class="form-label">Price</label>
-                                <input type="text" class="form-control" id="price" name="price"
-                                    placeholder="Input price">
-                            </div>
-                            <div class="mb-3">
-                                <label for="category_id" class="form-label">Category</label>
-                                <select class="form-select" id="category_id" name="category_id">
-                                    @foreach ($cate as $item)
-                                        <option value="{{ $item->id }}">{{ $item->category_name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="image" class="form-label">Image</label>
-                                <input type="file" class="form-control" id="image" name="uimage">
+                                <label for="price" class="form-label">Category Name</label>
+                                <input type="text" class="form-control" id="price" name="category_name"
+                                    placeholder="Input category name">
                             </div>
                             <div class="mb-3">
                                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -56,25 +34,20 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Product Name</th>
-                                    <th scope="col">Image</th>
-                                    <th scope="col">Price</th>
+                                    <th scope="col">Category ID</th>
+                                    <th scope="col">Category Name</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($product as $item)
+                                @foreach ($category as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->product_name }}</td>
-                                        <td><img src="/uploads/{{ $item->image }}" alt="Product Image"
-                                                class="img-thumbnail" style="max-width: 100px;"></td>
-                                        <td>{{ $item->price }}</td>
+                                        <td>{{ $item->category_name }}</td>
                                         <td>
-                                            <a href="{{ route('edit', ['id' => $item->id]) }}"
+                                            <a href="{{ route('editcategory', ['id' => $item->id]) }}"
                                                 class="btn btn-info btn-sm">Edit</a>
-                                            <a href="{{ route('delete', ['id' => $item->id]) }}"
+                                            <a href="{{ route('deletecategory', ['id' => $item->id]) }}"
                                                 class="btn btn-danger btn-sm">Delete</a>
                                         </td>
                                     </tr>

@@ -11,35 +11,32 @@
                         <form action="" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
-                                <label for="product_name" class="form-label">Product Name</label>
-                                <input type="text" class="form-control" id="product_name" name="product_name"
-                                    placeholder="Input product name">
-                            </div>
-                            <div style='color:red;'>
-                                @error('usn')
-                                    {{ $message }}
-                                @enderror
+                                <label for="" class="form-label">Description</label>
+                                <input type="text" class="form-control" id="" name="description"
+                                    placeholder="Input category name">
                             </div>
                             <div class="mb-3">
-                                <label for="price" class="form-label">Price</label>
-                                <input type="text" class="form-control" id="price" name="price"
-                                    placeholder="Input price">
+                                <label for="" class="form-label">Quantity</label>
+                                <input type="text" class="form-control" id="" name="quantity"
+                                    placeholder="Input category name">
                             </div>
                             <div class="mb-3">
-                                <label for="category_id" class="form-label">Category</label>
-                                <select class="form-select" id="category_id" name="category_id">
-                                    @foreach ($cate as $item)
-                                        <option value="{{ $item->id }}">{{ $item->category_name }}</option>
+                                <label for="" class="form-label">Size</label>
+                                <input type="text" class="form-control" id="" name="size"
+                                    placeholder="Input category name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="product_id" class="form-label"></label>
+                                <select class="form-select" id="product_id" name="product_id">
+                                    @foreach ($product as $item)
+                                        <option value="{{ $item->id }}">{{ $item->product_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="image" class="form-label">Image</label>
-                                <input type="file" class="form-control" id="image" name="uimage">
-                            </div>
-                            <div class="mb-3">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
+
                         </form>
                     </div>
                 </div>
@@ -57,28 +54,29 @@
                             <thead>
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">Product Name</th>
-                                    <th scope="col">Image</th>
-                                    <th scope="col">Price</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Size</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($product as $item)
+                                @foreach ($detail as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->product_name }}</td>
-                                        <td><img src="/uploads/{{ $item->image }}" alt="Product Image"
-                                                class="img-thumbnail" style="max-width: 100px;"></td>
-                                        <td>{{ $item->price }}</td>
+                                        <td>{{ $item->description }}</td>
+                                        <td>{{ $item->quantity }}</td>
+                                        <td>{{ $item->size }}</td>
                                         <td>
-                                            <a href="{{ route('edit', ['id' => $item->id]) }}"
+                                            <a href="{{ route('editdetail', ['id' => $item->id]) }}"
                                                 class="btn btn-info btn-sm">Edit</a>
-                                            <a href="{{ route('delete', ['id' => $item->id]) }}"
+                                            <a href="{{ route('deletedetail', ['id' => $item->id]) }}"
                                                 class="btn btn-danger btn-sm">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach
+
+
                             </tbody>
                         </table>
                     </div>

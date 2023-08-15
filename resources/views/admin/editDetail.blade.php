@@ -51,34 +51,38 @@
                         <form action="" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
-                                <label for="product_name" class="form-label">Product Name</label>
-                                <input type="text" class="form-control" id="product_name" name="product_name"
-                                    value="{{ $product->product_name }}">
+                                <label for="" class="form-label">Description</label>
+                                <input type="text" class="form-control" id="" name="description"
+                                    placeholder="Input category name" value="{{ $detail->description }}">
                             </div>
                             <div class="mb-3">
-                                <label for="price" class="form-label">Price</label>
-                                <input type="text" class="form-control" id="price" name="price"
-                                    value="{{ $product->price }}">
+                                <label for="" class="form-label">Quantity</label>
+                                <input type="text" class="form-control" id="" name="quantity"
+                                    placeholder="Input category name" value="{{ $detail->quantity }}">
                             </div>
                             <div class="mb-3">
-                                <label for="category_id" class="form-label">Category</label>
-                                <select class="form-select" id="category_id" name="category_id">
-                                    @foreach ($cate as $item)
-                                        <option value="{{ $item->id }}">{{ $item->category_name }}</option>
+                                <label for="" class="form-label">Size</label>
+                                <input type="text" class="form-control" id="" name="size"
+                                    placeholder="Input category name" value="{{ $detail->size }}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="product_id" class="form-label"></label>
+                                <select class="form-select" id="product_id" name="product_id">
+                                    @foreach ($product as $item)
+                                        <option value="{{ $item->id }}">{{ $item->product_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="image" class="form-label">Image</label>
-                                <input type="file" class="form-control" name="uimage"
-                                    value="/uploads/{{ $product->image }}">
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-success">Update</button>
+
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

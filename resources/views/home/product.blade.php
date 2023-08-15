@@ -13,7 +13,7 @@
                     <div class="col-lg-3 mb-4 text-center">
                         <div class="product-entry border">
                             <a href="{{ route('product_detail', ['id' => $item->id]) }}" class="prod-img">
-                                <img src="{{ $item->image }}" class="img-fluid" alt="picture error">
+                                <img src="/uploads/{{ $item->image }}" class="img-fluid" alt="picture error">
                             </a>
                             <div class="desc">
                                 <h2><a href="">{{ $item->product_name }}</a></h2>
@@ -23,6 +23,21 @@
                         </div>
                     </div>
                 @endforeach
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center mt-4">
+                <div class="block-27">
+                    <ul>
+                        <li><a href="#"><i class="ion-ios-arrow-back"></i></a></li>
+                        <li class="active"><span>1</span></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#"><i class="ion-ios-arrow-forward"></i></a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     @endsection

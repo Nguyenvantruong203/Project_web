@@ -12,7 +12,8 @@
                     <div class="col-lg-3 mb-4 text-center">
                         <div class="product-entry border">
                             <a href="#" class="prod-img">
-                                <img src="{{ $item->image }}" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                                <img src="/uploads/{{ $item->image }}" class="img-fluid"
+                                    alt="Free html5 bootstrap 4 template">
                             </a>
                             <div class="desc">
                                 <h2><a href="#">{{ $item->product_name }}</a></h2>

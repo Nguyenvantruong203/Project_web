@@ -2,9 +2,10 @@
 <html>
 
 <head>
-    <title>Shop clothes</title>
+    <title>Shop Vladak</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Rokkitt:100,300,400,700" rel="stylesheet">
 
@@ -15,7 +16,6 @@
     <!-- Ion Icon Fonts-->
     <link rel="stylesheet" href="{{ asset('assets/css/ionicons.min.css') }}">
     <!-- Bootstrap  -->
-    {{-- <link rel="stylesheet" href="css/bootstrap.min.css"> --}}
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
 
     <!-- Magnific Popup -->
@@ -81,49 +81,48 @@
         <div class="colorlib-product">
             <div class="container">
                 <div class="row row-pb-lg product-detail-wrap">
-                    <div class="col-sm-8">
-                        <div class="owl-carousel">
-                            <div class="item">
-                                <div class="product-entry border">
-                                    <a href="" class="prod-img">
-                                        <img src="{{ $pro->image }}" class="img-fluid" alt="picture error">
-                                    </a>
-                                </div>
+                    <div class="col-sm-6">
+                        {{-- <div class="owl-carousel"> --}}
+                        <div class="item">
+                            <div class="product-entry border">
+                                <a href="" class="prod-img">
+                                    <img src="/uploads/{{ $product->image }}" class="img-fluid" alt="picture error">
+                                </a>
                             </div>
                         </div>
+                        {{-- </div> --}}
                     </div>
                     <div class="col-sm-4">
                         <div class="product-desc">
-                            <h3>{{ $pro->product_name }}</h3>
+                            <h3>{{ $product->product_name }}</h3>
                             <p class="price">
-                                <span>{{ $pro->price }}</span>
+                                <span>{{ $product->price }}$</span>
                             </p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, aliquid! Quo aut nemo
-                                maxime sequi itaque velit, qui dolores odit ullam ut obcaecati quae impedit non,
-                                doloremque dolorum veritatis. Vel.</p>
+                            <p>{{ $product->description }}</p>
                             <div class="input-group mb-4">
-                                {{-- <span class="input-group-btn">
+                                <span class="input-group-btn">
                                     <button type="button" class="quantity-left-minus btn" data-type="minus"
                                         data-field="">
                                         <i class="icon-minus2"></i>
                                     </button>
-                                </span> --}}
+                                </span>
                                 <input type="text" id="quantity" name="quantity" class="form-control input-number"
                                     value="1" min="1" max="100">
-                                {{-- <span class="input-group-btn ml-1">
+                                <span class="input-group-btn ml-1">
                                     <button type="button" class="quantity-right-plus btn" data-type="plus"
                                         data-field="">
                                         <i class="icon-plus2"></i>
                                     </button>
-                                </span> --}}
+                                </span>
 
                             </div>
                             <p class="input-group-btn "><input type="text" class="form-control input-number"
                                     placeholder="Inputs Size"></p>
                             <div class="row">
                                 <div class="col-sm-12 text-center">
-                                    <p class="addtocart"><a href="/cart" class="btn btn-primary btn-addtocart"><i
-                                                class="icon-shopping-cart"></i> Add to Cart</a></p>
+                                    <p style="align-center" class="addtocart"><a href="/cart"
+                                            class="btn btn-primary btn-addtocart"><i class="icon-shopping-cart"></i> Add
+                                            to Cart</a></p>
                                 </div>
                             </div>
                         </div>
@@ -134,11 +133,6 @@
     </div>
 
     @include('home.footer')
-    </div>
-
-    <div class="gototop js-top">
-        <a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
-    </div>
 
     <!-- jQuery -->
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
@@ -163,6 +157,35 @@
     <script src="{{ asset('assets/js/jquery.stellar.min.js') }}"></script>
     <!-- Main -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+
+            var quantitiy = 0;
+            $('.quantity-right-plus').click(function(e) {
+                // Stop acting like a button
+                e.preventDefault();
+                // Get the field name
+                var quantity = parseInt($('#quantity').val());
+                // If is not undefined
+                $('#quantity').val(quantity + 1);
+                // Increment
+            });
+
+            $('.quantity-left-minus').click(function(e) {
+                // Stop acting like a button
+                e.preventDefault();
+                // Get the field name
+                var quantity = parseInt($('#quantity').val());
+                // If is not undefined
+                // Increment
+                if (quantity > 0) {
+                    $('#quantity').val(quantity - 1);
+                }
+            });
+
+        });
+    </script>
 
 
 </body>

@@ -10,7 +10,7 @@ class product_detail extends Model
     use HasFactory;
     public $timestamps = false;
     protected $fillable = [
-        'id',
+        'product_detail_id',
         'description',
         'quantity',
         'size',
