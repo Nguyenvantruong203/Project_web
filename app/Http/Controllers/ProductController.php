@@ -40,10 +40,6 @@ class ProductController extends Controller
     public function show($id)
     {
         $pro = Product::find($id);
-        // $pro = DB::table('products')
-        // ->join('product_details', 'products.id', '=', 'product_details.product_id')
-        // ->select('products.*', 'product_details.*')
-        // ->get();
         return view('home.product_detail', compact('pro'));
     }
 

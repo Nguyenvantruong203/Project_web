@@ -2,9 +2,10 @@
 <html>
 
 <head>
-    <title>Shop clothes</title>
+    <title>Shop Vladak</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Rokkitt:100,300,400,700" rel="stylesheet">
 
@@ -15,7 +16,6 @@
     <!-- Ion Icon Fonts-->
     <link rel="stylesheet" href="{{ asset('assets/css/ionicons.min.css') }}">
     <!-- Bootstrap  -->
-    {{-- <link rel="stylesheet" href="css/bootstrap.min.css"> --}}
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
 
     <!-- Magnific Popup -->
@@ -81,16 +81,16 @@
         <div class="colorlib-product">
             <div class="container">
                 <div class="row row-pb-lg product-detail-wrap">
-                    <div class="col-sm-8">
-                        <div class="owl-carousel">
-                            <div class="item">
-                                <div class="product-entry border">
-                                    <a href="" class="prod-img">
-                                        <img src="{{ $pro->image }}" class="img-fluid" alt="picture error">
-                                    </a>
-                                </div>
+                    <div class="col-sm-6">
+                        {{-- <div class="owl-carousel"> --}}
+                        <div class="item">
+                            <div class="product-entry border">
+                                <a href="" class="prod-img">
+                                    <img src="/uploads/{{ $pro->image }}" class="img-fluid" alt="picture error">
+                                </a>
                             </div>
                         </div>
+                        {{-- </div> --}}
                     </div>
                     <div class="col-sm-4">
                         <div class="product-desc">
@@ -122,8 +122,9 @@
                                     placeholder="Inputs Size"></p>
                             <div class="row">
                                 <div class="col-sm-12 text-center">
-                                    <p class="addtocart"><a href="/cart" class="btn btn-primary btn-addtocart"><i
-                                                class="icon-shopping-cart"></i> Add to Cart</a></p>
+                                    <p style="align-center" class="addtocart"><a href="/cart"
+                                            class="btn btn-primary btn-addtocart"><i class="icon-shopping-cart"></i> Add
+                                            to Cart</a></p>
                                 </div>
                             </div>
                         </div>
@@ -134,11 +135,6 @@
     </div>
 
     @include('home.footer')
-    </div>
-
-    <div class="gototop js-top">
-        <a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
-    </div>
 
     <!-- jQuery -->
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>

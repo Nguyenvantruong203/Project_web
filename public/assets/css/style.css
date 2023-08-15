@@ -451,7 +451,7 @@ pre {
 .container {
   width: 100%;
   padding-right: 15px;
-  padding-left: 15px;
+  padding-left: 10x;
   margin-right: auto;
   margin-left: auto; }
   @media (min-width: 576px) {
@@ -7279,7 +7279,7 @@ a.text-dark:hover, a.text-dark:focus {
 
 /* =======================================================
 *
-* 	Template Style 
+* 	Template Style
 *
 * ======================================================= */
 body {
