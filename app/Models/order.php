@@ -14,13 +14,15 @@ class order extends Model
         'order_id',
         'size',
         'quantity',
-        'id',
+        'product_id',
+        'user_id',
     ];
 
-    // public function customer(){
-    //     return $this->belongsTo(Customer::class); // 1 order - n customers
-    // }
-    public function product_detail(){
-        return $this->belongsTo(product_detail::class); // 1 order - n customers
+    public function user(){
+        return $this->belongsTo(User::class); // 1 order - n users
     }
+    public function product(){
+        return $this->belongsTo(Product::class); // 1 order - n customers
+    }
+
 }
