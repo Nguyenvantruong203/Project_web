@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Auth\AuthController;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +39,7 @@ Route::prefix('/admin')->group(function () {
     Route::get('/delete/{id}', [AdminController::class, 'destroy'])->name('delete');
 });
 
+// route admin quản lý category
 Route::prefix('/admin')->group(function () {
     Route::get('/homecategory', [CategoryController::class, 'index'])->name('indexcategory');
     Route::post('/homecategory', [CategoryController::class, 'create'])->name('createcategory');
@@ -42,3 +47,10 @@ Route::prefix('/admin')->group(function () {
     Route::post('/editcategory/{id}', [CategoryController::class, 'update'])->name('updatecategory');
     Route::get('/deletecategory/{id}', [CategoryController::class, 'destroy'])->name('deletecategory');
 });
+
+// route login and register
+route::get('/login', [AuthController::class, 'formLogin'])->name('login'); // không xử lý return ở đây nữa mà xử lí trong controller
+// B1: khi bấm vào url login thì phương thức formLogin sẽ được gọi ra
+
+
+Route::get('/registration', [AuthController::class, 'registration'])->name('register');
