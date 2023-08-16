@@ -16,9 +16,6 @@ class product_detail extends Model
         'size',
         'product_id',
     ];
-    public function order(){
-        return $this->hasOne(order::class);
-    }
     public function product() {
         return $this->belongsTo(Product::class);
     }
