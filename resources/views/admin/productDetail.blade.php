@@ -12,21 +12,23 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="" class="form-label">Description</label>
-                                <input type="text" class="form-control" id="" name="description"
-                                    placeholder="Input category name">
+                                {{-- <input type="text" class="form-control" id="" name="description"
+                                    placeholder="Input description"> --}}
+                                <textarea name="description" rows="4" cols="50" placeholder="Input description"></textarea>
+
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">Quantity</label>
                                 <input type="text" class="form-control" id="" name="quantity"
-                                    placeholder="Input category name">
+                                    placeholder="Input quantity">
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">Size</label>
                                 <input type="text" class="form-control" id="" name="size"
-                                    placeholder="Input category name">
+                                    placeholder="Input size">
                             </div>
                             <div class="mb-3">
-                                <label for="product_id" class="form-label"></label>
+                                <label for="product_id" class="form-label">Product Name</label>
                                 <select class="form-select" id="product_id" name="product_id">
                                     @foreach ($product as $item)
                                         <option value="{{ $item->id }}">{{ $item->product_name }}</option>
@@ -34,7 +36,7 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary btn-success">Submit</button>
                             </div>
 
                         </form>
@@ -53,20 +55,20 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col">ID</th>
                                     <th scope="col">Description</th>
                                     <th scope="col">Quantity</th>
                                     <th scope="col">Size</th>
+                                    <th scope="col">Product ID</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($detail as $item)
                                     <tr>
-                                        <td>{{ $item->id }}</td>
                                         <td>{{ $item->description }}</td>
                                         <td>{{ $item->quantity }}</td>
                                         <td>{{ $item->size }}</td>
+                                        <td>{{ $item->product_id }}</td>
                                         <td>
                                             <a href="{{ route('editdetail', ['id' => $item->id]) }}"
                                                 class="btn btn-info btn-sm">Edit</a>

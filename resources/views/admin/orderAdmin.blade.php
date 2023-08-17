@@ -3,34 +3,11 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-5">
-                <div class="card">
-                    <div class="card-header">
-                        Add New Product
-                    </div>
-                    <div class="card-body">
-                        <form action="" method="post" enctype="multipart/form-data">
-                            @csrf
-                            <div class="mb-3">
-                                <label for="quantity" class="form-label">quantity</label>
-                                <input type="text" class="form-control" id="quantity" name="quantity"
-                                    placeholder="Input category name">
-                            </div>
-                            <div class="mb-3">
-                                <label for="size" class="form-label">size</label>
-                                <input type="text" class="form-control" id="size" name="size"
-                                    placeholder="Input category name">
-                            </div>
-                            <div class="mb-3">
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
                 @if (session()->has('status'))
                     <div class="alert alert-success">{{ session('status') }}</div>
                 @endif
             </div>
-            <div class="col-lg-7">
+            <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
                         Product List
@@ -39,17 +16,22 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col">order quantity</th>
-                                    <th scope="col">order size</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Ảnh</th>
+                                    <th scope="col">Tên Sản Phẩm</th>
+                                    <th scope="col">Giá</th>
+                                    <th scope="col">Số Lượng</th>
+                                    <th scope="col">Hành Động</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($order as $item)
                                     <tr>
-
                                         <td>{{ $item->quantity }}</td>
                                         <td>{{ $item->size }}</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                         <td>
                                             <a href="" class="btn btn-info btn-sm">Edit</a>
                                             <a href="" class="btn btn-danger btn-sm">Delete</a>
