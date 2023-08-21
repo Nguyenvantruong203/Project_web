@@ -82,7 +82,6 @@
             <div class="container">
                 <div class="row row-pb-lg product-detail-wrap">
                     <div class="col-sm-6">
-                        {{-- <div class="owl-carousel"> --}}
                         <div class="item">
                             <div class="product-entry border">
                                 <a href="" class="prod-img">
@@ -90,7 +89,6 @@
                                 </a>
                             </div>
                         </div>
-                        {{-- </div> --}}
                     </div>
                     <div class="col-sm-4">
                         <div class="product-desc">
@@ -120,7 +118,8 @@
                                     placeholder="Inputs Size"></p>
                             <div class="row">
                                 <div class="col-sm-12 text-center">
-                                    <p style="align-center" class="addtocart"><a href="/cart"
+                                    <p style="align-center" class="addtocart"><a
+                                            href="{{ route('cartindex', ['id' => $product->product_id]) }}"
                                             class="btn btn-primary btn-addtocart"><i class="icon-shopping-cart"></i> Add
                                             to Cart</a></p>
                                 </div>

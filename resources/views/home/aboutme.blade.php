@@ -89,7 +89,7 @@
                 <div class="row row-pb-lg">
                     <div class="col-sm-6 mb-3">
                         <div class="video colorlib-video" style="background-image: url(assets/images/about.jpg);">
-                            <a href="https://www.youtube.com/watch?v=xMjq8KvYZ00" class="popup-vimeo"><i
+                            <a href="https://www.youtube.com/watch?v=BIdnEl4uhs0" class="popup-vimeo"><i
                                     class="icon-play3"></i></a>
                             <div class="overlay"></div>
                         </div>

@@ -3,9 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductDetailController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +28,9 @@ Route::get('/about', function () {
     Route::get('/home', [ProductController::class, "index"]);
     Route::get('/product', [ProductController::class, "index"])->name('index');
     Route::get('product_detail/{id}', [ProductController::class, "show"])->name('product_detail');
+
+    Route::get('/cart', [CartController::class, "index"])->name('cartindex');
+    // Route::post('/cart/{id}', [CartController::class, 'create'])->name('createcart');
 
 
 
@@ -58,5 +63,6 @@ Route::get('/about', function () {
         Route::post('/homeorder', [OrderController ::class, 'store'])->name('createorder');
 
     });
+
 
 
