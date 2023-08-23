@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\order;
+use App\Models\product;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -11,31 +13,41 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+        $product = product::all();
+        return view('home.cart', compact('product'));
     }
+
+
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+    // public function create($id)
+    // {
+    //     $product = product::find($id);
+    //     $pro = product::all();
+    //     return view('home.cart', compact('product', 'pro'));
+    // }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request, $id)
     {
-        //
+        $product = product::find($id);
+        $cart = new order();
+        $cart->quantity = $request->quantity;
+        $cart->size = $request->size;
+        $cart->save();
+        return redirect()->back();
     }
 
     /**

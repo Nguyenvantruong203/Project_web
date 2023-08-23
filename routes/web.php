@@ -3,9 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductDetailController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +28,9 @@ Route::get('/about', function () {
     Route::get('/home', [ProductController::class, "index"]);
     Route::get('/product', [ProductController::class, "index"])->name('index');
     Route::get('product_detail/{id}', [ProductController::class, "show"])->name('product_detail');
+
+    Route::get('/cart', [CartController::class, "index"])->name('cartindex');
+    Route::post('/addcart/{id}', [CartController::class, 'create'])->name('addtocart');
 
 
 
@@ -52,11 +57,20 @@ Route::get('/about', function () {
         Route::post('/editdetail/{id}', [ProductDetailController::class, 'update'])->name('updatedetail');
         Route::get('/deletedetail/{id}', [ProductDetailController::class, 'destroy'])->name('deletedetail');
     });
+    Route::prefix('/admin')->group(function(){
+        Route::get('/homeorder', [OrderController::class, 'index'])->name('indexorder');
+        Route::post('/homeorder', [OrderController ::class, 'create'])->name('createorder');
+        Route::get('/orderedit/{id}', [OrderController::class, 'edit'])->name('editorder');
+        Route::post('/orderedit/{id}', [OrderController::class, 'update'])->name('updateorder');
+        Route::get('/deleteorder/{id}', [OrderController::class, 'destroy'])->name('deleteorder');
+
+    });
 
     Route::prefix('/admin')->group(function(){
         Route::get('/homeorder', [OrderController::class, 'index'])->name('indexorder');
         Route::post('/homeorder', [OrderController ::class, 'store'])->name('createorder');
 
     });
+
 
 

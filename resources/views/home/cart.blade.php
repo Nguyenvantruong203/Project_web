@@ -99,6 +99,7 @@
                 margin-top: 10px;
             }
         </style>
+
         <div class="container mt-5">
             <h2>Your Shopping Cart</h2>
             <div class="table-responsive">
@@ -110,24 +111,30 @@
                             <th scope="col">Tên Sản Phẩm</th>
                             <th scope="col">Giá</th>
                             <th scope="col">Số Lượng</th>
+                            <th scope="col">Size</th>
                             <th scope="col">Hành Động</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td><img src="https://via.placeholder.com/150" alt="Product Image"></td>
-                            <td>Product 1</td>
-                            <td>$10.00</td>
-                            <td>
-                                <input type="number" class="form-control" value="1" min="1">
-                            </td>
-                            <td><button class="btn btn-danger btn-sm">Xóa</button></td>
-                        </tr>
+                        @foreach ($product as $item)
+                            <tr>
+                                <td scope="row">{{ $item->id }}</td>
+                                <td><img src="/uploads/{{ $item->image }}" alt="Product Image"></td>
+                                <td>{{ $item->product_name }}</td>
+                                <td>{{ $item->price }}</td>
+                                <td>
+                                    <input type="number" class="form-control" value="1" min="1"
+                                        name="quantity">
+                                </td>
+                                <td>M</td>
+                                <td><button class="btn btn-danger btn-sm">Xóa</button></td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
+
 
         @include('home.footer')
     </div>

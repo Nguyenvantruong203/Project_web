@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\order;
+use App\Models\product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 
@@ -13,8 +15,10 @@ class OrderController extends Controller
      */
     public function index()
     {
+        $user = user::all();
         $order = order::all();
-        return view('admin.orderAdmin', compact(['order']));
+        $product = product::all();
+        return view('admin.orderAdmin', compact('order', 'product', 'user'));
     }
 
     /**
@@ -22,7 +26,13 @@ class OrderController extends Controller
      */
     public function create(Request $request)
     {
-
+        $order = new order();
+        $order->quantity = $request->quantity;
+        $order->size = $request->size;
+        $order->product_id = $request->product_id;
+        $order->user_id = $request->user_id;
+        $order->save();
+        return redirect(route('indexorder'));
     }
 
     /**
@@ -30,11 +40,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        $order = new order();
-        $order->quantity = $request->quantity;
-        $order->size = $request->size;
-        $order->save();
-        return redirect(route('indexorder'));
+
     }
 
     /**
@@ -50,7 +56,10 @@ class OrderController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = user::all();
+        $order = order::all();
+        $product = product::all();
+        return view('admin.editorder', compact('order', 'product', 'user'));
     }
 
     /**
@@ -58,7 +67,13 @@ class OrderController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $order= order::find($id);
+        $order->quantity = $request->quantity;
+        $order->size = $request->size;
+        $order->product_id = $request->product_id;
+        $order->user_id = $request->user_id;
+        $order->save();
+        return redirect(route('indexorder'));
     }
 
     /**
@@ -66,6 +81,7 @@ class OrderController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        order::destroy($id);
+        return redirect(route('indexorder'));
     }
 }

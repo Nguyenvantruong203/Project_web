@@ -38,7 +38,7 @@
                                 <input type="file" class="form-control" id="image" name="uimage">
                             </div>
                             <div class="mb-3">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary btn-success">Submit</button>
                             </div>
                         </form>
                     </div>

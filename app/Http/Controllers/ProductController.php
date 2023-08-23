@@ -22,9 +22,11 @@ class ProductController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    // public function product_detail(){
-
-    //     return view('home.product_detail', compact('product'));
+    // public function create($id)
+    // {
+    //     $product = product::find($id);
+    //     $pro = product::all();
+    //     return view('home.cart', compact('product', 'pro'));
     // }
     /**
      * Store a newly created resource in storage.
@@ -39,7 +41,6 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-
         $product = Product::join('product_details', 'products.id', '=', 'product_details.product_id')
         ->select('products.*', 'product_details.*')
         ->where('products.id', $id)
