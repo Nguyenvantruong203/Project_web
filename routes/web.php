@@ -30,7 +30,7 @@ Route::get('/about', function () {
     Route::get('product_detail/{id}', [ProductController::class, "show"])->name('product_detail');
 
     Route::get('/cart', [CartController::class, "index"])->name('cartindex');
-    // Route::post('/cart/{id}', [CartController::class, 'create'])->name('createcart');
+    Route::post('/addcart/{id}', [CartController::class, 'create'])->name('addtocart');
 
 
 
@@ -56,6 +56,14 @@ Route::get('/about', function () {
         Route::get('/editdetail/{id}', [ProductDetailController::class, 'edit'])->name('editdetail');
         Route::post('/editdetail/{id}', [ProductDetailController::class, 'update'])->name('updatedetail');
         Route::get('/deletedetail/{id}', [ProductDetailController::class, 'destroy'])->name('deletedetail');
+    });
+    Route::prefix('/admin')->group(function(){
+        Route::get('/homeorder', [OrderController::class, 'index'])->name('indexorder');
+        Route::post('/homeorder', [OrderController ::class, 'create'])->name('createorder');
+        Route::get('/orderedit/{id}', [OrderController::class, 'edit'])->name('editorder');
+        Route::post('/orderedit/{id}', [OrderController::class, 'update'])->name('updateorder');
+        Route::get('/deleteorder/{id}', [OrderController::class, 'destroy'])->name('deleteorder');
+
     });
 
     Route::prefix('/admin')->group(function(){

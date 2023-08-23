@@ -35,7 +35,7 @@ class AdminController extends Controller
                 'usn.required' => "Username ko dc bo trong1",
                 'usn.min' => "Username hon 8",
                 'pwd.required' => "pass ko dc bo trong3",
-                'pwd.min:8' => "pass lon hon 8   ",
+                'pwd.min:8' => "pass lon hon 8",
 
             ]
         );

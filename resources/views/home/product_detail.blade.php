@@ -80,6 +80,7 @@
 
         <div class="colorlib-product">
             <div class="container">
+
                 <div class="row row-pb-lg product-detail-wrap">
                     <div class="col-sm-6">
                         <div class="item">
@@ -97,36 +98,42 @@
                                 <span>{{ $product->price }}$</span>
                             </p>
                             <p>{{ $product->description }}</p>
-                            <div class="input-group mb-4">
-                                <span class="input-group-btn">
-                                    <button type="button" class="quantity-left-minus btn" data-type="minus"
-                                        data-field="">
-                                        <i class="icon-minus2"></i>
-                                    </button>
-                                </span>
-                                <input type="text" id="quantity" name="quantity" class="form-control input-number"
-                                    value="1" min="1" max="100">
-                                <span class="input-group-btn ml-1">
-                                    <button type="button" class="quantity-right-plus btn" data-type="plus"
-                                        data-field="">
-                                        <i class="icon-plus2"></i>
-                                    </button>
-                                </span>
 
-                            </div>
-                            <p class="input-group-btn "><input type="text" class="form-control input-number"
-                                    placeholder="Inputs Size"></p>
-                            <div class="row">
-                                <div class="col-sm-12 text-center">
-                                    <p style="align-center" class="addtocart"><a
-                                            href="{{ route('cartindex', ['id' => $product->product_id]) }}"
-                                            class="btn btn-primary btn-addtocart"><i class="icon-shopping-cart"></i> Add
-                                            to Cart</a></p>
+                            <form action="{{ route('addtocart', $product->product_id) }}" method="post"
+                                enctype="multipart/form-data">
+                                @csrf
+                                <div class="input-group mb-4">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="quantity-left-minus btn" data-type="minus"
+                                            data-field="">
+                                            <i class="icon-minus2"></i>
+                                        </button>
+                                    </span>
+                                    <input type="text" id="quantity" name="quantity"
+                                        class="form-control input-number" value="1" min="1" max="100">
+                                    <span class="input-group-btn ml-1">
+                                        <button type="button" class="quantity-right-plus btn" data-type="plus"
+                                            data-field="">
+                                            <i class="icon-plus2"></i>
+                                        </button>
+                                    </span>
+
                                 </div>
-                            </div>
+                                <p class="input-group-btn "><input type="text" class="form-control input-number"
+                                        name="size" placeholder="Inputs Size"></p>
+                                <div class="row">
+                                    <div class="col-sm-12 text-center">
+                                        <p style="align-center" class="addtocart"><a href=""
+                                                class="btn btn-primary btn-addtocart"><i class="icon-shopping-cart"></i>
+                                                Add to Cart</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

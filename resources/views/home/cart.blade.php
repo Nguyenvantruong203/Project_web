@@ -118,12 +118,13 @@
                     <tbody>
                         @foreach ($product as $item)
                             <tr>
-                                <th scope="row">{{ $item->id }}</th>
+                                <td scope="row">{{ $item->id }}</td>
                                 <td><img src="/uploads/{{ $item->image }}" alt="Product Image"></td>
                                 <td>{{ $item->product_name }}</td>
                                 <td>{{ $item->price }}</td>
                                 <td>
-                                    <input type="number" class="form-control" value="1" min="1">
+                                    <input type="number" class="form-control" value="1" min="1"
+                                        name="quantity">
                                 </td>
                                 <td>M</td>
                                 <td><button class="btn btn-danger btn-sm">Xóa</button></td>
