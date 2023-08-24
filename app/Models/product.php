@@ -12,7 +12,7 @@ class product extends Model
     // protected $table = 'product';
     //đặt tên để gọi được table trong query builder ()
     protected $fillable = [
-        // 'product_id',
+        'product_id',
         'product_name',
         'category_id',
         'price',
@@ -26,4 +26,10 @@ class product extends Model
     {
         return $this->belongsTo(Category::class);
     }
+<<<<<<< HEAD
+=======
+    public function order(){
+        return $this -> belongsTo(Order::class);
+    }
+>>>>>>> master
 }

@@ -51,29 +51,34 @@
                         <form action="" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
-                                <label for="product_name" class="form-label">Product Name</label>
-                                <input type="text" class="form-control" id="product_name" name="product_name"
-                                    value="{{ $product->product_name }}">
+                                <label for="quantity" class="form-label">quantity</label>
+                                <input type="text" class="form-control" id="quantity" name="quantity"
+                                    placeholder="Input quantity">
                             </div>
                             <div class="mb-3">
-                                <label for="price" class="form-label">Price</label>
-                                <input type="text" class="form-control" id="price" name="price"
-                                    value="{{ $product->price }}">
+                                <label for="size" class="form-label">size</label>
+                                <input type="text" class="form-control" id="size" name="size"
+                                    placeholder="Input size">
                             </div>
                             <div class="mb-3">
-                                <label for="category_id" class="form-label">Category</label>
-                                <select class="form-select" id="category_id" name="category_id">
-                                    @foreach ($cate as $item)
-                                        <option value="{{ $item->id }}">{{ $item->category_name }}</option>
+                                <label for="product_id" class="form-label">choose product name</label>
+                                <select class="form-select" id="product_id" name="product_id">
+                                    @foreach ($product as $item)
+                                        <option value="{{ $item->id }}">{{ $item->product_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="image" class="form-label">Image</label>
-                                <input type="file" class="form-control" name="uimage"
-                                    value="/uploads/{{ $product->image }}">
+                                <label for="user_id" class="form-label">choose customer name</label>
+                                <select class="form-select" id="user_id" name="user_id">
+                                    @foreach ($user as $item)
+                                        <option value="{{ $item->id }}">{{ $item->user_name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-success">Update</button>
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
                         </form>
                     </div>
                 </div>

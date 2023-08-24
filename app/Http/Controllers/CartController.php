@@ -1,23 +1,23 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\product;
-use App\Models\category;
-use App\Models\product_detail;
-// use Illuminate\Support\Facades\DB;
 
+use App\Models\order;
+use App\Models\product;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class CartController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-       $product = product::all();
-        return view('home.product', compact('product'));
+        $product = product::all();
+        return view('home.cart', compact('product'));
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -28,25 +28,26 @@ class ProductController extends Controller
     //     $pro = product::all();
     //     return view('home.cart', compact('product', 'pro'));
     // }
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        $product = Product::join('product_details', 'products.id', '=', 'product_details.product_id')
-        ->select('products.*', 'product_details.*')
-        ->where('products.id', $id)
-        ->first();
-        // return response()->json($product);
-        return view('home.product_detail', compact('product'));
+        $product = product::find($id);
+        $cart = new order();
+        $cart->quantity = $request->quantity;
+        $cart->size = $request->size;
+        $cart->save();
+        return redirect()->back();
     }
 
     /**

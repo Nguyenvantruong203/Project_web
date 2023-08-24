@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Shop Vladak</title>
+    <title>Shop Clothes</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -81,36 +81,61 @@
                 </div>
             </div>
         </div>
+        <style>
+            .table td,
+            .table th {
+                vertical-align: middle;
+            }
 
+            .table img {
+                max-width: 200px;
+            }
 
-        <div class="colorlib-product">
-            <div class="container">
-                <div class="row row-pb-lg">
-                    <div class="col-md-12">
-                        <div class="product-name d-flex">
-                            <div class="one-forth text-left ml-4 mt-2 px-3">
-                                <span>Image</span>
-                            </div>
-                            <div class="one-eight text-center">
-                                <span>Product Name</span>
-                            </div>
-                            <div class="one-eight text-center">
-                                <span>Price</span>
-                            </div>
-                            <div class="one-eight text-center">
-                                <span>Quantity</span>
-                            </div>
-                            <div class="one-eight text-center">
-                                <span>Size</span>
-                            </div>
-                            <div class="one-eight text-center px-4">
-                                <span>Remove</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            .table input {
+                width: 60px;
+            }
+
+            .table .btn-danger {
+                margin-top: 10px;
+            }
+        </style>
+
+        <div class="container mt-5">
+            <h2>Your Shopping Cart</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Ảnh</th>
+                            <th scope="col">Tên Sản Phẩm</th>
+                            <th scope="col">Giá</th>
+                            <th scope="col">Số Lượng</th>
+                            <th scope="col">Size</th>
+                            <th scope="col">Hành Động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($product as $item)
+                            <tr>
+                                <td scope="row">{{ $item->id }}</td>
+                                <td><img src="/uploads/{{ $item->image }}" alt="Product Image"></td>
+                                <td>{{ $item->product_name }}</td>
+                                <td>{{ $item->price }}</td>
+                                <td>
+                                    <input type="number" class="form-control" value="1" min="1"
+                                        name="quantity">
+                                </td>
+                                <td>M</td>
+                                <td><button class="btn btn-danger btn-sm">Xóa</button></td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
+
+
         @include('home.footer')
     </div>
 

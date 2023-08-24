@@ -80,56 +80,60 @@
 
         <div class="colorlib-product">
             <div class="container">
+
                 <div class="row row-pb-lg product-detail-wrap">
                     <div class="col-sm-6">
-                        {{-- <div class="owl-carousel"> --}}
                         <div class="item">
                             <div class="product-entry border">
                                 <a href="" class="prod-img">
-                                    <img src="/uploads/{{ $pro->image }}" class="img-fluid" alt="picture error">
+                                    <img src="/uploads/{{ $product->image }}" class="img-fluid" alt="picture error">
                                 </a>
                             </div>
                         </div>
-                        {{-- </div> --}}
                     </div>
                     <div class="col-sm-4">
                         <div class="product-desc">
-                            <h3>{{ $pro->product_name }}</h3>
+                            <h3>{{ $product->product_name }}</h3>
                             <p class="price">
-                                <span>{{ $pro->price }}</span>
+                                <span>{{ $product->price }}$</span>
                             </p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, aliquid! Quo aut nemo
-                                maxime sequi itaque velit, qui dolores odit ullam ut obcaecati quae impedit non,
-                                doloremque dolorum veritatis. Vel.</p>
-                            <div class="input-group mb-4">
-                                {{-- <span class="input-group-btn">
-                                    <button type="button" class="quantity-left-minus btn" data-type="minus"
-                                        data-field="">
-                                        <i class="icon-minus2"></i>
-                                    </button>
-                                </span> --}}
-                                <input type="text" id="quantity" name="quantity" class="form-control input-number"
-                                    value="1" min="1" max="100">
-                                {{-- <span class="input-group-btn ml-1">
-                                    <button type="button" class="quantity-right-plus btn" data-type="plus"
-                                        data-field="">
-                                        <i class="icon-plus2"></i>
-                                    </button>
-                                </span> --}}
+                            <p>{{ $product->description }}</p>
 
-                            </div>
-                            <p class="input-group-btn "><input type="text" class="form-control input-number"
-                                    placeholder="Inputs Size"></p>
-                            <div class="row">
-                                <div class="col-sm-12 text-center">
-                                    <p style="align-center" class="addtocart"><a href="/cart"
-                                            class="btn btn-primary btn-addtocart"><i class="icon-shopping-cart"></i> Add
-                                            to Cart</a></p>
+                            <form action="{{ route('addtocart', $product->product_id) }}" method="post"
+                                enctype="multipart/form-data">
+                                @csrf
+                                <div class="input-group mb-4">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="quantity-left-minus btn" data-type="minus"
+                                            data-field="">
+                                            <i class="icon-minus2"></i>
+                                        </button>
+                                    </span>
+                                    <input type="text" id="quantity" name="quantity"
+                                        class="form-control input-number" value="1" min="1" max="100">
+                                    <span class="input-group-btn ml-1">
+                                        <button type="button" class="quantity-right-plus btn" data-type="plus"
+                                            data-field="">
+                                            <i class="icon-plus2"></i>
+                                        </button>
+                                    </span>
+
                                 </div>
-                            </div>
+                                <p class="input-group-btn "><input type="text" class="form-control input-number"
+                                        name="size" placeholder="Inputs Size"></p>
+                                <div class="row">
+                                    <div class="col-sm-12 text-center">
+                                        <p style="align-center" class="addtocart"><a href=""
+                                                class="btn btn-primary btn-addtocart"><i class="icon-shopping-cart"></i>
+                                                Add to Cart</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -159,6 +163,35 @@
     <script src="{{ asset('assets/js/jquery.stellar.min.js') }}"></script>
     <!-- Main -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+
+            var quantitiy = 0;
+            $('.quantity-right-plus').click(function(e) {
+                // Stop acting like a button
+                e.preventDefault();
+                // Get the field name
+                var quantity = parseInt($('#quantity').val());
+                // If is not undefined
+                $('#quantity').val(quantity + 1);
+                // Increment
+            });
+
+            $('.quantity-left-minus').click(function(e) {
+                // Stop acting like a button
+                e.preventDefault();
+                // Get the field name
+                var quantity = parseInt($('#quantity').val());
+                // If is not undefined
+                // Increment
+                if (quantity > 0) {
+                    $('#quantity').val(quantity - 1);
+                }
+            });
+
+        });
+    </script>
 
 
 </body>

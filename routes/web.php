@@ -3,11 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\Auth\AuthController;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductDetailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +28,9 @@ Route::get('/home', [ProductController::class, "index"]);
 Route::get('/product', [ProductController::class, "index"])->name('index');
 Route::get('product_detail/{id}', [ProductController::class, "show"])->name('product_detail');
 
+Route::get('/cart', [CartController::class, "index"])->name('cartindex');
+Route::post('/addcart/{id}', [CartController::class, 'create'])->name('addtocart');
+
 
 
 Route::prefix('/admin')->group(function () {
@@ -39,18 +41,14 @@ Route::prefix('/admin')->group(function () {
     Route::get('/delete/{id}', [AdminController::class, 'destroy'])->name('delete');
 });
 
-// route admin quản lý category
 Route::prefix('/admin')->group(function () {
-    Route::get('/homecategory', [CategoryController::class, 'index'])->name('indexcategory'); // hiển thị list category(có method là index ở trong controller)
-    Route::post('/homecategory', [CategoryController::class, 'create'])->name('createcategory'); // thêm category
-    Route::get('/editcategory/{id}', [CategoryController::class, 'edit'])->name('editcategory'); // lấy dữ liệu id rồi trả ra view editcategory
-    Route::post('/editcategory/{id}', [CategoryController::class, 'update'])->name('updatecategory'); // cập nhật lại vào trang home
-    Route::get('/deletecategory/{id}', [CategoryController::class, 'destroy'])->name('deletecategory'); // xoá sản phẩm
+    Route::get('/homecategory', [CategoryController::class, 'index'])->name('indexcategory');
+    Route::post('/homecategory', [CategoryController::class, 'create'])->name('createcategory');
+    Route::get('/editcategory/{id}', [CategoryController::class, 'edit'])->name('editcategory');
+    Route::post('/editcategory/{id}', [CategoryController::class, 'update'])->name('updatecategory');
+    Route::get('/deletecategory/{id}', [CategoryController::class, 'destroy'])->name('deletecategory');
 });
 
-// route login and register
-route::get('/login', [AuthController::class, 'formLogin'])->name('login'); // không xử lý return ở đây nữa mà xử lí trong controller
-// B1: khi bấm vào url login thì phương thức formLogin sẽ được gọi ra
 
 
 Route::get('/registration', [AuthController::class, 'registration'])->name('register');

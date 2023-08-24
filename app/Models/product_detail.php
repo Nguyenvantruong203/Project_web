@@ -10,15 +10,12 @@ class product_detail extends Model
     use HasFactory;
     public $timestamps = false;
     protected $fillable = [
-        'id',
+        'product_detail_id',
         'description',
         'quantity',
         'size',
         'product_id',
     ];
-    public function order(){
-        return $this->hasOne(order::class);
-    }
     public function product() {
         return $this->belongsTo(Product::class);
     }
