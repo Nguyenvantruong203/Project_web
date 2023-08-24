@@ -16,7 +16,6 @@ class AdminController extends Controller
         $product = product::all();
         $cate = category::all();
         return view('admin.homeadmin', compact('product', 'cate'));
-
     }
 
     /**
@@ -24,12 +23,12 @@ class AdminController extends Controller
      */
     public function create(Request $request)
     {
-        if($request->has('uimage')){
+        if ($request->has('uimage')) { //
             $file = $request->uimage;
-            $file_name= $file->getClientOriginalName();
+            $file_name = $file->getClientOriginalName();
             $file->move(public_path('uploads'), $file_name);
         }
-        $request->merge(['image'=>$file_name]);
+        $request->merge(['image' => $file_name]);
         $product = new Product();
         $product->product_name = $request->product_name;
         $product->category_id = $request->category_id;

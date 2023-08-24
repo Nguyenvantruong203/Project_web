@@ -41,11 +41,11 @@ Route::prefix('/admin')->group(function () {
 
 // route admin quản lý category
 Route::prefix('/admin')->group(function () {
-    Route::get('/homecategory', [CategoryController::class, 'index'])->name('indexcategory');
-    Route::post('/homecategory', [CategoryController::class, 'create'])->name('createcategory');
-    Route::get('/editcategory/{id}', [CategoryController::class, 'edit'])->name('editcategory');
-    Route::post('/editcategory/{id}', [CategoryController::class, 'update'])->name('updatecategory');
-    Route::get('/deletecategory/{id}', [CategoryController::class, 'destroy'])->name('deletecategory');
+    Route::get('/homecategory', [CategoryController::class, 'index'])->name('indexcategory'); // hiển thị list category(có method là index ở trong controller)
+    Route::post('/homecategory', [CategoryController::class, 'create'])->name('createcategory'); // thêm category
+    Route::get('/editcategory/{id}', [CategoryController::class, 'edit'])->name('editcategory'); // lấy dữ liệu id rồi trả ra view editcategory
+    Route::post('/editcategory/{id}', [CategoryController::class, 'update'])->name('updatecategory'); // cập nhật lại vào trang home
+    Route::get('/deletecategory/{id}', [CategoryController::class, 'destroy'])->name('deletecategory'); // xoá sản phẩm
 });
 
 // route login and register
