@@ -23,6 +23,9 @@ class AdminController extends Controller
      */
     public function create(Request $request)
     {
+<<<<<<< HEAD
+        if ($request->has('uimage')) { //
+=======
         $request->validate(
             [
                 'product_name' => 'required|integer',
@@ -40,11 +43,12 @@ class AdminController extends Controller
             ]
         );
         if($request->has('uimage')){
+>>>>>>> master
             $file = $request->uimage;
-            $file_name= $file->getClientOriginalName();
+            $file_name = $file->getClientOriginalName();
             $file->move(public_path('uploads'), $file_name);
         }
-        $request->merge(['image'=>$file_name]);
+        $request->merge(['image' => $file_name]);
         $product = new Product();
         $product->product_name = $request->product_name;
         $product->category_id = $request->category_id;

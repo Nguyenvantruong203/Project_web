@@ -9,7 +9,8 @@ class product extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    // protected $table = 'product';//đặt tên để gọi được table trong query builder ()
+    // protected $table = 'product';
+    //đặt tên để gọi được table trong query builder ()
     protected $fillable = [
         'product_id',
         'product_name',
@@ -17,13 +18,18 @@ class product extends Model
         'price',
         'image',
     ];
-    public function product_detail(){
+    public function product_detail()
+    {
         return $this->hasOne(ProductDetail::class);
     }
-    public function category(){
-        return $this -> belongsTo(Category::class);
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
+<<<<<<< HEAD
+=======
     public function order(){
         return $this -> belongsTo(Order::class);
     }
+>>>>>>> master
 }

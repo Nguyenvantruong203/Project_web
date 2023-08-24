@@ -42,7 +42,7 @@
 <body>
     @include('admin.headeradmin')
 
-    @yield('product')
+    @yield('product') {{-- Khai báo vị trí trong template   --}}
 
     @include('admin.footeradmin')
     </div>
