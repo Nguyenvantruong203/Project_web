@@ -12,19 +12,35 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = category::all();
+        $category = category::all(); // hiển thị ra tất cả các trường dữ liệu trong table category
         return view('admin.categoryAdmin', compact('category'));
+        // lấy ra toàn bộ các trường, danh sách trong table category để hiển thị ra view
     }
+    // sau đó ở trong view chúng ta sẽ truyền các tham số, method vào từng nút
 
     /**
      * Show the form for creating a new resource.
      */
     public function create(Request $request)
     {
-        $category = new category();
-        $category->category_name = $request->category_name;
+        $request->validate(
+            [
+                'category_name' => 'required|min:2|alpha',
+
+            ],
+            [
+                'category_name.required' => "Không được để trống",
+                'category_name.alpha' => "Không được nhập số",
+                'category_name.min' => "Nhập ít nhất 2 ký tự",
+            ]
+
+        );
+        $category = new category(); // khởi tạo một category mới để lưu những gì ở ô input
+        $category->category_name = $request->category_name; // gửi một yêu cầu giá trị yêu cầu vào thuộc tính category_name, trong cái ô input của mình trong view
         $category->save();
         return redirect(route('indexcategory'))->with('status', 'Added product successfully!!');
+        // sau khi add xong và đã lưu vào table categories sẽ chuyển hướng sang route(indexcategory) rồi hiển thị lên status
+        // rồi sau đó ở route('indexcategory') => sẽ có method index sẽ thực hiện các chức năng mà chúng ta đã làm ở method index
     }
 
     /**
@@ -50,6 +66,17 @@ class CategoryController extends Controller
      */
     public function update(Request $request ,$id)
     {
+        $request->validate(
+            [
+                'category_name' => 'required|min:2|alpha',
+            ],
+            [
+                'category_name.required' => "Không được để trống",
+                'category_name.alpha' => "Không được nhập số",
+                'category_name.min' => "Nhập ít nhất 2 ký tự",
+            ]
+
+        );
         $category = category::find($id);
         $category->category_name = $request->category_name;
         $category->save();

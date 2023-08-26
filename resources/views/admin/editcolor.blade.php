@@ -50,17 +50,23 @@
                     <div class="card-body">
                         <form action="" method="post" enctype="multipart/form-data">
                             @csrf
+
+
                             <div class="mb-3">
-                                <label for="" class="form-label">Product Name</label>
-                                <input type="text" class="form-control" id="" name="category_name"
-                                    {{-- Cho phép người dùng nhập dữ liệu vào trường "category_name" --}} {{-- id ='product_name': đây là thuộc tính ID của trường nhập --}} {{-- Những trường categories_name sẽ truyền id product (ở bên category Admin) hiển thị lên để sửa --}}
-                                    value="{{ $category->category_name }}">
-                                {{-- Truyền tham số vào input này --}}
+                                <label for="" class="form-label">Color</label>
+                                <input type="color" class="form-control" id="" name="color_code"
+                                    placeholder="Input category name" value="{{ $color->color_code }}">
                             </div>
                             <div style='color:red;'>
                                 @error('product_name')
                                     {{ $message }}
                                 @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Color Name</label>
+                                <input type="text" class="form-control" id="color_name" name="color_name"
+                                    value="{{ $color->color_name }}">
+
                             </div>
                             <button type="submit" class="btn btn-primary btn-success">Update</button>
                         </form>

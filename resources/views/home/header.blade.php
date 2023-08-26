@@ -21,8 +21,11 @@
                     <div class="col-sm-12 text-left menu-1">
                         <ul>
                             <li class="active"><a href="/home">Home</a></li>
-                            <li><a href="/product">Shop</a></li>
+
+                            @yield('category')
+
                             <li><a href="/about">About</a></li>
+
                             <li class="cart"><a href="/cart"><i class="icon-shopping-cart"></i> Cart</a>
                             </li>
                         </ul>

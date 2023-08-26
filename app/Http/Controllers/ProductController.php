@@ -16,7 +16,8 @@ class ProductController extends Controller
     public function index()
     {
        $product = product::all();
-        return view('home.product', compact('product'));
+       $category= category::all();
+        return view('home.product', compact('product', 'category'));
     }
 
     /**
@@ -41,20 +42,29 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::join('product_details', 'products.id', '=', 'product_details.product_id')
-        ->select('products.*', 'product_details.*')
-        ->where('products.id', $id)
+        $product = Product::select('products.*', 'categories.category_name as category_name', 'colors.name as color_name', 'providers.provider_name as provider_name')
+        ->join('categories', 'products.category_id', '=', 'categories.id')
+        ->join('providers', 'products.provider_id', '=', 'providers.id')
+        ->join('colors', 'products.color_id', '=', 'colors.id')
+        ->where('products.id', $id) 
         ->first();
         // return response()->json($product);
         return view('home.product_detail', compact('product'));
     }
 
+    public function findByCategory($id){
+        $product = Product::where('category_id',$id)->get();
+        $category= category::all();
+    return view('home.product_category', compact('product', 'category'));
+
+    }
     /**
      * Show the form for editing the specified resource.
      */
+
     public function edit(string $id)
     {
-        //
+
     }
 
     /**

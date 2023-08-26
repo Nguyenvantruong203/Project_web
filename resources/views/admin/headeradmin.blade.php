@@ -69,21 +69,20 @@
                             </a>
                         </li>
                         <li class="nav-item mx-2">
-                            <a class="nav-link" href="{{ route('indexdetail') }}">
-                                Product Detail
-                            </a>
-                        </li>
-                        <li class="nav-item mx-2">
                             <a class="nav-link" href="{{ route('indexcategory') }}">
                                 Category
                             </a>
                         </li>
                         <li class="nav-item mx-2">
-                            <a class="nav-link" href="{{ route('indexorder') }}">
-                                Orders
+                            <a class="nav-link" href="{{ route('indexcolor') }}">
+                                color
                             </a>
                         </li>
-
+                        <li class="nav-item mx-2">
+                            <a class="nav-link" href="{{ route('indexprovider') }}">
+                                provider
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </nav>

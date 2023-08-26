@@ -5,9 +5,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\ProductDetailController;
-
+use App\Http\Controllers\ColorController;
+use App\Http\Controllers\providerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +27,11 @@ Route::get('/about', function () {
     Route::get('/home', [ProductController::class, "index"]);
     Route::get('/product', [ProductController::class, "index"])->name('index');
     Route::get('product_detail/{id}', [ProductController::class, "show"])->name('product_detail');
+    Route::get('product_category/{id}', [ProductController::class, "findByCategory"])->name('product_category');
 
-    Route::get('/cart', [CartController::class, "index"])->name('cartindex');
-    Route::post('/addcart/{id}', [CartController::class, 'create'])->name('addtocart');
+
+    // Route::get('/cart', [CartController::class, "index"])->name('cartindex');
+    // Route::post('/addcart/{id}', [CartController::class, 'create'])->name('addtocart');
 
 
 
@@ -50,27 +51,26 @@ Route::get('/about', function () {
         Route::get('/deletecategory/{id}', [CategoryController::class, 'destroy'])->name('deletecategory');
     });
 
-    Route::prefix('/admin')->group(function(){
-        Route::get('/homedetail', [ProductDetailController::class, 'index'])->name('indexdetail');
-        Route::post('/homedetail', [ProductDetailController::class, 'create'])->name('createdetail');
-        Route::get('/editdetail/{id}', [ProductDetailController::class, 'edit'])->name('editdetail');
-        Route::post('/editdetail/{id}', [ProductDetailController::class, 'update'])->name('updatedetail');
-        Route::get('/deletedetail/{id}', [ProductDetailController::class, 'destroy'])->name('deletedetail');
-    });
-    Route::prefix('/admin')->group(function(){
-        Route::get('/homeorder', [OrderController::class, 'index'])->name('indexorder');
-        Route::post('/homeorder', [OrderController ::class, 'create'])->name('createorder');
-        Route::get('/orderedit/{id}', [OrderController::class, 'edit'])->name('editorder');
-        Route::post('/orderedit/{id}', [OrderController::class, 'update'])->name('updateorder');
-        Route::get('/deleteorder/{id}', [OrderController::class, 'destroy'])->name('deleteorder');
 
-    });
+    // Route::prefix('/admin')->group(function(){
+    //     Route::get('/homeorder', [OrderController::class, 'index'])->name('indexorder');
+    //     Route::post('/homeorder', [OrderController ::class, 'store'])->name('createorder');
+    // });
 
     Route::prefix('/admin')->group(function(){
-        Route::get('/homeorder', [OrderController::class, 'index'])->name('indexorder');
-        Route::post('/homeorder', [OrderController ::class, 'store'])->name('createorder');
+        Route::get('/homecolor', [ColorController::class, 'index'])->name('indexcolor');
+        Route::post('/homecolor', [ColorController::class, 'create'])->name('createcolor');
+        Route::get('/editcolor/{id}', [ColorController::class, 'edit'])->name('editcolor');
+        Route::post('/editcolor/{id}', [ColorController::class, 'update'])->name('updatecolor');
+        Route::get('/deletecolor/{id}', [ColorController::class, 'destroy'])->name('deletecolor');
+
 
     });
+    Route::prefix('/admin')->group(function(){
+        Route::get('/homeprovider', [providerController::class, 'index'])->name('indexprovider');
+        Route::post('/homeprovider', [providerController::class, 'create'])->name('createprovider');
+        Route::get('/editprovider/{id}', [providerController::class, 'edit'])->name('editprovider');
+        Route::post('/editprovider/{id}', [providerController::class, 'update'])->name('updateprovider');
+        Route::get('/deleteprovider/{id}', [providerController::class, 'destroy'])->name('deleteprovider');
 
-
-
+    });

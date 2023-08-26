@@ -11,8 +11,18 @@
                         <form action="" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
-                                <label for="price" class="form-label">Category Name</label>
-                                <input type="text" class="form-control" id="price" name="category_name"
+                                <label for="" class="form-label">provider Name</label>
+                                <input type="text" class="form-control" id="" name="provider_name"
+                                    placeholder="Input category name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">phone</label>
+                                <input type="text" class="form-control" id="" name="phone"
+                                    placeholder="Input category name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">address</label>
+                                <input type="text" class="form-control" id="" name="address"
                                     placeholder="Input category name">
                             </div>
                             <div style='color:red;'>
@@ -39,23 +49,28 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col">Category ID</th>
-                                    <th scope="col">Category Name</th>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Provider Name</th>
+                                    <th scope="col">phone</th>
+                                    <th scope="col">address Name</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($category as $item)
+                                @foreach ($provider as $item)
                                     {{-- lặp show dữ liệu  --}}
                                     <tr>
                                         <td>{{ $item->id }}</td>
                                         {{-- Hướng tới trường id, lấy tất cả các record ID trong table category hiển thị ra --}}
-                                        <td>{{ $item->category_name }}</td>
+                                        <td>{{ $item->provider_name }}</td>
+                                        <td>{{ $item->phone }}</td>
+                                        <td>{{ $item->address }}</td>
+
                                         <td>
-                                            <a href="{{ route('editcategory', ['id' => $item->id]) }}"
+                                            <a href="{{ route('editprovider', ['id' => $item->id]) }}"
                                                 class="btn btn-info btn-sm">Edit</a>
                                             {{-- Khi bấm vào nút edit sẽ chuyển sang trang editcategory, route edit sẽ nhận id mình muốn sửa --}}
-                                            <a href="{{ route('deletecategory', ['id' => $item->id]) }}"
+                                            <a href="{{ route('deleteprovider', ['id' => $item->id]) }}"
                                                 class="btn btn-danger btn-sm">Delete</a>
                                         </td>
                                     </tr>
