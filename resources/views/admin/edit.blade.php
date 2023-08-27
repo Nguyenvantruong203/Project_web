@@ -53,12 +53,22 @@
                             <div class="mb-3">
                                 <label for="product_name" class="form-label">Product Name</label>
                                 <input type="text" class="form-control" id="product_name" name="product_name"
-                                    value="{{ $product->product_name }}">
+                                    placeholder="Input product name" value="{{ $product->product_name }}">
+                            </div>
+                            <div style='color:red;'>
+                                @error('product_name')
+                                    {{ $message }}
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="price" class="form-label">Price</label>
                                 <input type="text" class="form-control" id="price" name="price"
-                                    value="{{ $product->price }}">
+                                    placeholder="Input price" value="{{ $product->price }}">
+                            </div>
+                            <div style='color:red;'>
+                                @error('price')
+                                    {{ $message }}
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="category_id" class="form-label">Category</label>
@@ -69,11 +79,50 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="image" class="form-label">Image</label>
-                                <input type="file" class="form-control" name="uimage"
-                                    value="/uploads/{{ $product->image }}">
+                                <label for="" class="form-label">Image</label>
+                                <input type="file" class="form-control" id="" name="uimage"
+                                    value="{{ $product->image }}">
                             </div>
-                            <button type="submit" class="btn btn-primary btn-success">Update</button>
+                            <div class="mb-3">
+                                <label for="" class="form-label">description</label>
+                                <input type="text" class="form-control" id="" name="description"
+                                    placeholder="Input price" value="{{ $product->description }}">
+                            </div>
+                            <div style='color:red;'>
+                                @error('description')
+                                    {{ $message }}
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">size</label>
+                                <input type="text" class="form-control" id="" name="size"
+                                    placeholder="Input price" value="{{ $product->size }}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">quantity</label>
+                                <input type="text" class="form-control" id="" name="quantity"
+                                    placeholder="Input price" value="{{ $product->quantity }}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">color</label>
+                                <select class="form-select" id="" name="color_id">
+                                    @foreach ($color as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">provider</label>
+                                <select class="form-select" id="" name="provider_id">
+                                    @foreach ($provider as $item)
+                                        <option value="{{ $item->id }}">{{ $item->provider_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-primary btn-success">Submit</button>
+                            </div>
+
                         </form>
                     </div>
                 </div>

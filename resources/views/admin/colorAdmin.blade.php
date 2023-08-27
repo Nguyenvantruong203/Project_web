@@ -1,6 +1,5 @@
 @extends('admin.layoutadmin')
 @section('product')
-    {{-- Định nghĩa nội dung của @yield --}}
     <div class="container">
         <div class="row">
             <div class="col-lg-5">
@@ -12,14 +11,19 @@
                         <form action="" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
-                                <label for="price" class="form-label">Category Name</label>
-                                <input type="text" class="form-control" id="price" name="category_name">
-                                {{-- ô input nhận dữ liệu của category_name --}}
+                                <label for="price" class="form-label">Color</label>
+                                <input type="color" class="form-control" id="" name="color_code"
+                                    placeholder="Input category name">
                             </div>
                             <div style='color:red;'>
                                 @error('category_name')
                                     {{ $message }}
                                 @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="price" class="form-label">Color Name</label>
+                                <input type="text" class="form-control" id="price" name="color_name"
+                                    placeholder="Input category name">
                             </div>
                             <div class="mb-3">
                                 <button type="submit" class="btn btn-primary btn-success">Submit</button>
@@ -28,8 +32,6 @@
                     </div>
                 </div>
                 @if (session()->has('status'))
-                    {{-- Bộ nhớ tạm thời --}}
-                    {{-- Đoạn này chưa rõ => Có thể là khi bấm submit xong sẽ hiển thị ra một status  --}}
                     <div class="alert alert-success">{{ session('status') }}</div>
                 @endif
             </div>
@@ -42,28 +44,25 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col">Category ID</th>
-                                    <th scope="col">Category Name</th>
+                                    <th scope="col">Color ID</th>
+                                    <th scope="col">Color Name</th>
+                                    <th scope="col">Color</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($category as $item)
+                                @foreach ($color as $item)
                                     {{-- lặp show dữ liệu  --}}
                                     <tr>
                                         <td>{{ $item->id }}</td>
                                         {{-- Hướng tới trường id, lấy tất cả các record ID trong table category hiển thị ra --}}
-                                    {{-- Lặp show dữ liệu --}}
-                                    {{-- Phần này là phần dưới bảng  --}}
-                                    <tr>
-                                        <td>{{ $item->id }}</td> {{-- Hướng tới trường id, lấy tất cả các record ID trong table category hiển thị ra --}}
-
-                                        <td>{{ $item->category_name }}</td>
+                                        <td>{{ $item->name }}</td>
+                                        <td style="background-color:{{ $item->color_code }}"></td>
                                         <td>
-                                            <a href="{{ route('editcategory', ['id' => $item->id]) }}"
+                                            <a href="{{ route('editcolor', ['id' => $item->id]) }}"
                                                 class="btn btn-info btn-sm">Edit</a>
                                             {{-- Khi bấm vào nút edit sẽ chuyển sang trang editcategory, route edit sẽ nhận id mình muốn sửa --}}
-                                            <a href="{{ route('deletecategory', ['id' => $item->id]) }}"
+                                            <a href="{{ route('deletecolor', ['id' => $item->id]) }}"
                                                 class="btn btn-danger btn-sm">Delete</a>
                                         </td>
                                     </tr>
@@ -72,7 +71,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="row"> {{-- Phần hiển thị trang ở dưới --}}
+                <div class="row">
                     <div class="col-md-12 text-center mt-4">
                         <div class="block-27">
                             <ul>

@@ -48,6 +48,7 @@
             <div class="top-menu">
                 @include('home.header')
             </div>
+
             <div class="sale">
                 <div class="container">
                     <div class="row">

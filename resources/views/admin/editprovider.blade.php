@@ -51,21 +51,24 @@
                         <form action="" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
-                                <label for="" class="form-label">Product Name</label>
-
-                                <input type="text" class="form-control" id="" name="category_name"
-                                    {{-- Cho phép người dùng nhập dữ liệu vào trường "category_name" --}} {{-- id ='product_name': đây là thuộc tính ID của trường nhập --}} {{-- Những trường categories_name sẽ truyền id product (ở bên category Admin) hiển thị lên để sửa --}}
-                                    value="{{ $category->category_name }}">
-                                {{-- Truyền tham số vào input này --}}
+                                <label for="" class="form-label">provider Name</label>
+                                <input type="text" class="form-control" id="" name="provider_name"
+                                    placeholder="Input category name" value="{{ $provider->provider_name }}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">phone</label>
+                                <input type="text" class="form-control" id="" name="phone"
+                                    placeholder="Input category name" value="{{ $provider->phone }}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">address</label>
+                                <input type="text" class="form-control" id="" name="address"
+                                    placeholder="Input category name" value="{{ $provider->address }}">
                             </div>
                             <div style='color:red;'>
-                                @error('product_name')
+                                @error('category_name')
                                     {{ $message }}
                                 @enderror
-                      <input type="text" class="form-control" id="product_name" name="category_name"
-                                    {{--  cho phép người dùng nhập dữ liệu vào trường "category_name" --}} {{-- id="product_name": Đây là thuộc tính ID của trường nhập. --}} {{-- Những trường category_name sẽ truyền id product(ở bên category Admin) hiển thị lên để sửa  --}}
-                                    value="{{ $category->category_name }}">
-                                {{-- truyền tham số vào ô input này  --}}
                             </div>
                             <button type="submit" class="btn btn-primary btn-success">Update</button>
                         </form>

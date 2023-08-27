@@ -18,18 +18,15 @@ class product extends Model
         'price',
         'image',
     ];
-    public function product_detail()
-    {
-        return $this->hasOne(ProductDetail::class);
-    }
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
-<<<<<<< HEAD
-=======
-    public function order(){
-        return $this -> belongsTo(Order::class);
-    }
->>>>>>> master
-}
+
+    public function category(){
+        return $this -> belongsTo(Category::class);
+    } // nhiều sản phẩm trong 1 cate
+    public function color(){
+        return $this -> belongsTo(color::class);
+    } // nhiều sản phẩm trong 1 cate
+    public function provider(){
+        return $this -> belongsTo(provider::class);
+    } // nhiều sản phẩm trong 1 cate
+
+

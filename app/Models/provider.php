@@ -5,16 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class category extends Model
+class provider extends Model
 {
     use HasFactory;
-    public $timestamps = false;
-
     protected $fillable = [
-        'category_id',
-        'category_name',
+        "provide_id",
+        "provider_name",
+        'phone',
+        'address'
     ];
-
     public function product(){ // mối quan hệ 1- nhiều với product
         return $this->hasMany(Product::class);
+    }
+
 }
