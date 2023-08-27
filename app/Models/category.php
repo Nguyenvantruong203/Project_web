@@ -14,8 +14,7 @@ class category extends Model
         'category_id',
         'category_name',
     ];
+
     public function product(){ // mối quan hệ 1- nhiều với product
         return $this->hasMany(Product::class);
-    }
-
 }

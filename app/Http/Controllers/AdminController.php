@@ -43,12 +43,19 @@ class AdminController extends Controller
                 'price.numeric' => "Phải nhập số",
             ]
         );
+
         if($request->has('uimage')){//kiểm tra xem ảnh đã được tải lên chưa
             $file = $request->uimage;//gán cái ảnh tải lên vào biến file
             $file_name= $file->getClientOriginalName();//getClientOriginalName để lấy tên gốc của ảnh
             $file->move(public_path('uploads'), $file_name);//move chuyển tệp hình ảnh vào thư mục uploads
         }
         $request->merge(['image'=>$file_name]);//merge để cập nhật giá trị của trường image trong yêu cầu với tên tệp hình ảnh đã tải lên.
+        if($request->has('uimage')){
+            $file = $request->uimage;
+            $file_name = $file->getClientOriginalName();
+            $file->move(public_path('uploads'), $file_name);
+        }
+        $request->merge(['image' => $file_name]);
         $product = new Product();
         $product->product_name = $request->product_name;
         $product->category_id = $request->category_id;

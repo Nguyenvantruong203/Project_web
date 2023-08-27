@@ -18,6 +18,7 @@ class product extends Model
         'price',
         'image',
     ];
+
     public function category(){
         return $this -> belongsTo(Category::class);
     } // nhiều sản phẩm trong 1 cate
@@ -29,4 +30,3 @@ class product extends Model
     } // nhiều sản phẩm trong 1 cate
 
 
-}
